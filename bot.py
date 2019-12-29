@@ -3,7 +3,7 @@ import discord
 import random
 import logging
 app=discord.Client()
-token = "NjU3OTQ5ODk2MjYzMDczODEx.Xgcv1g.JPleX2JshGl_0pCQmm7fP28cods"
+token = ""
 @app.event
 async def on_ready():
     print("다음으로 로그인합니다 : ")
