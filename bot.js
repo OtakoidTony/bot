@@ -132,4 +132,4 @@ client.on('guildMemberAdd', member => {
   channel.send(`ㅎ2, ${member}`);
 return;
 });
-client.login('NjU3OTQ5ODk2MjYzMDczODEx.XgsNmQ.oV4n9SK276t7W53cgCk-bk36ieA');
+client.login('비밀');
