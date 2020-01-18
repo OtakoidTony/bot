@@ -4,7 +4,7 @@ import random
 import os
 import openpyxl
 import datetime
-token=os.environ("BOT_TOKEN")
+token=os.environ["BOT_TOKEN"]
 client=discord.Client()
 @client.event
 async def on_ready():
