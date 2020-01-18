@@ -13,7 +13,7 @@ import datetime
 #)
 #embed.set_footer(icon_url=message.author.avatar_url, text=f' | {str(message.author.display_name)} | {str(now.year)}년 {str(now.month)}월 {str(now.day)}일')
 #await message.channel.send(embed=embed)
-token=environ["BOT_TOKEN"]
+token=os.environ["BOT_TOKEN"]
 client=discord.Client()
 @client.event
 async def on_ready():
