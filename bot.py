@@ -7,19 +7,17 @@ import time
 import bs4
 import logging
 import requests
-from bs4 import BeautifulSoup
 import openpyxl 
 from discord.ext import tasks
 from itertools import cycle
 import youtube_dl
 import re
 import os
-from urllib.request import urlopen, Request
 import urllib
 import urllib.request
 import json
 app=discord.Client()
-token = os.envior["BOT_TOKEN2"]
+token = os.environ["BOT_TOKEN2"]
 @app.event
 async def on_ready():
     print("다음으로 로그인합니다 : ")
