@@ -2,25 +2,15 @@ import discord
 import asyncio
 import random
 import openpyxl
-import os
 import datetime
-#now=datetime.datetime.now()
-#msg='안녕하세여^^'
-#embed=discord.Embed(
-#   title=str(msg),
-#   description="챗 기능",
-#   colour=discord.Colour.blue()
-#)
-#embed.set_footer(icon_url=message.author.avatar_url, text=f' | {str(message.author.display_name)} | {str(now.year)}년 {str(now.month)}월 {str(now.day)}일')
-#await message.channel.send(embed=embed)
-token=os.environ["BOT_TOKEN"]
+token="NjYwMzkwNjY2NTM0MjU2NjQw.XiLMnA.R72CUv-JgxURXDYj_lVmIV2xPSA"
 client=discord.Client()
 @client.event
 async def on_ready():
     print('---------------------------------')
     print(f'| Client ID: {client.user.id} |')
     print(f'| Client Name: {client.user.name}           |')
-    print('---------------------------------')
+    print('---------------------------------')  
 @client.event
 async def on_message(message):
     async def makeembed(title, description):
@@ -105,7 +95,7 @@ async def on_message(message):
                 sheet["B" + str(i)].value = str(a)     #B 저장
                 sheet["C" + str(i)].value = str(message.author.id) #이 말을 가르쳐준 사람 id 저장
                 sheet["D" + str(i)].value = str(message.author) #이 말을 가르쳐준 사람 저장
-                await message.channel.send("[" + str(q[0:]) + "]라고 말하면 [" + str(a) + "]라고 대답하는 것을 배웠어!") #출력
+                await makeembed('커스텀명령어 추가 성공!', f'[{str(q[0:])}]라고 말하면 [{str(a)}]라고 말하라고요? 감사합니다')
                 file.save("기억.xlsx")
             elif message.content.startswith('키키야 커명추가'):
                 file = openpyxl.load_workbook("기억.xlsx") #파일 이름은 상관 없어요
@@ -167,7 +157,7 @@ async def on_message(message):
                 sheet["B" + str(i)].value = str(a)     #B 저장
                 sheet["C" + str(i)].value = str(message.author.id) #이 말을 가르쳐준 사람 id 저장
                 sheet["D" + str(i)].value = str(message.author) #이 말을 가르쳐준 사람 저장
-                await message.channel.send("[" + str(q[0:]) + "]라고 말하면 [" + str(a) + "]라고 대답하는 것을 배웠어!") #출력
+                await makeembed('커스텀명령어 추가 성공!', f'[{str(q[0:])}]라고 말하면 [{str(a)}]라고 말하라고요? 감사합니다')
                 file.save("기억.xlsx")
             elif message.content=='키키야 커명확인':
                 file = openpyxl.load_workbook("기억.xlsx")
