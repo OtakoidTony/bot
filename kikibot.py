@@ -2,6 +2,7 @@ import discord
 import asyncio
 import random
 import openpyxl
+import os
 import datetime
 #now=datetime.datetime.now()
 #msg='안녕하세여^^'
@@ -12,9 +13,7 @@ import datetime
 #)
 #embed.set_footer(icon_url=message.author.avatar_url, text=f' | {str(message.author.display_name)} | {str(now.year)}년 {str(now.month)}월 {str(now.day)}일')
 #await message.channel.send(embed=embed)
-tokenfile=openpyxl.load_workbook('토큰.xlsx')
-tokensheet=tokenfile.active
-token=str(tokensheet['A1'].value)
+token=environ["BOT_TOKEN"]
 client=discord.Client()
 @client.event
 async def on_ready():
