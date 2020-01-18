@@ -1,9 +1,10 @@
 import discord
 import asyncio
 import random
+import os
 import openpyxl
 import datetime
-token="NjYwMzkwNjY2NTM0MjU2NjQw.XiLMnA.R72CUv-JgxURXDYj_lVmIV2xPSA"
+token=os.enviorn("BOT_TOKEN")
 client=discord.Client()
 @client.event
 async def on_ready():
