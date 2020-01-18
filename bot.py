@@ -19,7 +19,7 @@ import urllib
 import urllib.request
 import json
 app=discord.Client()
-token = "NjU3OTQ5ODk2MjYzMDczODEx.Xhr7wg.hKiQo_C0gIWPaukTj2TLRG4Huh0"
+token = os.envior["BOT_TOKEN2"]
 @app.event
 async def on_ready():
     print("다음으로 로그인합니다 : ")
