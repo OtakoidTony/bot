@@ -1093,7 +1093,6 @@ async def my_background_task():
     await client.wait_until_ready()
     while not client.is_closed():
         act=["키키야 도움말을 입력해 명령어 확인", f'{len(client.guilds)}개의 서버에 참여중', f'{len(client.users)}명의 유저들과 소통하는중', '문의는 키키#1778', '키키야 서버 를 이용해 키키봇 서포트로']
-        act=["키키봇 데이터베이스 업데이트하는중-돈 기능 사용 불가"]
         for i in act:
             game = discord.Game(str(i))
             await client.change_presence(status=discord.Status.online  , activity=game)
