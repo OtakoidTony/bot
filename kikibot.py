@@ -25,7 +25,7 @@ import datetime
 con=sqlite3.connect('test.db')
 cur=con.cursor()
 queues={}
-token="NjU3OTQ5ODk2MjYzMDczODEx.XiMMoA.__KRz1YOhMUR831DoxfHCLfTnG0"
+token=os.environ["TOKEN"]
 client=discord.Client()
 admin='647630912795836437'
 black=[0]
