@@ -4,3 +4,6 @@ openpyxl==3.0.3
 bs4==0.0.1
 requests==2.22.0
 youtube_dl==2020.1.15
+google_images_download==2.8.0
+googletrans==2.4.0
+requests==2.22.0
