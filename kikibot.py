@@ -438,7 +438,7 @@ async def on_message(message):
                 s = smtplib.SMTP('smtp.gmail.com', 587)
                 s.starttls()
                 print(email)
-                s.login('happykiki7000@gmail.com', 'irmgtgjphzkgrpsp')
+                s.login('happykiki7000@gmail.com', os.environ["EMAIL"])
                 msg = MIMEText(m2sg)
                 msg['Subject'] = f'{message.author.display_name}    님의 메시지'
                 s.sendmail("happykiki7000@gmail.com", email, msg.as_string())
