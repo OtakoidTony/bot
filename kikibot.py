@@ -224,8 +224,8 @@ async def on_message(message):
                 msg=message.content[7:]
                 now=datetime.datetime.now()
                 embed=discord.Embed(
-                    title=msg.split('/')[0],
-                    description=msg.split('/')[1],
+                    title=msg.split('$')[0],
+                    description=msg.split('$')[1],
                     colour=discord.Colour.blue()
                 ).set_footer(icon_url=message.author.avatar_url, text=f' | {str(message.author.display_name)} | {str(now.year)}년 {str(now.month)}월 {str(now.day)}일')
                 for i in client.guilds:
