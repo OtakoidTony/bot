@@ -22,6 +22,7 @@ import os
 from bs4 import BeautifulSoup
 import urllib
 import datetime
+
 con=sqlite3.connect('test.db')
 cur=con.cursor()
 queues={}
@@ -32,6 +33,7 @@ black=[0]
 vip=[0]
 print(f'키키봇을 시작하는중입니다...몇초가 걸릴수 있습니다\n\n\n')
 afsdaf=cur.execute('SELECT * FROM USERS')
+
 for i in afsdaf:
     if i[4]==1:
         vip.append(i[0])
@@ -130,37 +132,21 @@ async def on_message(message):
                 req = Request(url, headers=hdr)
                 html = urllib.request.urlopen(req)
                 bsObj = bs4.BeautifulSoup(html, "html.parser")
-                todayBase = bsObj.find('div', {'class': 'main_info'})
-                todayTemp1 = todayBase.find('span', {'class': 'todaytemp'})
-                todayTemp = todayTemp1.text.strip()  # 온도
-                todayValueBase = todayBase.find('ul', {'class': 'info_list'})
-                todayValue2 = todayValueBase.find('p', {'class': 'cast_txt'})
-                todayValue = todayValue2.text.strip()  
-                todayFeelingTemp1 = todayValueBase.find('span', {'class': 'sensible'})
-                todayFeelingTemp = todayFeelingTemp1.text.strip()  
-                todayMiseaMongi1 = bsObj.find('div', {'class': 'sub_info'})
-                todayMiseaMongi2 = todayMiseaMongi1.find('div', {'class': 'detail_box'})
-                todayMiseaMongi3 = todayMiseaMongi2.find('dd')
-                todayMiseaMongi = todayMiseaMongi3.text  
-                tomorrowBase = bsObj.find('div', {'class': 'table_info weekly _weeklyWeather'})
-                tomorrowTemp1 = tomorrowBase.find('li', {'class': 'date_info'})
-                tomorrowTemp2 = tomorrowTemp1.find('dl')
-                tomorrowTemp3 = tomorrowTemp2.find('dd')
-                tomorrowTemp = tomorrowTemp3.text.strip()  
-                tomorrowAreaBase = bsObj.find('div', {'class': 'tomorrow_area'})
-                tomorrowMoring1 = tomorrowAreaBase.find('div', {'class': 'main_info morning_box'})
-                tomorrowMoring2 = tomorrowMoring1.find('span', {'class': 'todaytemp'})
-                tomorrowMoring = tomorrowMoring2.text.strip()  
-                tomorrowValue1 = tomorrowMoring1.find('div', {'class': 'info_data'})
-                tomorrowValue = tomorrowValue1.text.strip()  
-                tomorrowAreaBase = bsObj.find('div', {'class': 'tomorrow_area'})
-                tomorrowAllFind = tomorrowAreaBase.find_all('div', {'class': 'main_info morning_box'})
-                tomorrowAfter1 = tomorrowAllFind[1]
-                tomorrowAfter2 = tomorrowAfter1.find('p', {'class': 'info_temperature'})
-                tomorrowAfter3 = tomorrowAfter2.find('span', {'class': 'todaytemp'})
-                tomorrowAfterTemp = tomorrowAfter3.text.strip() 
-                tomorrowAfterValue1 = tomorrowAfter1.find('div', {'class': 'info_data'})
-                tomorrowAfterValue = tomorrowAfterValue1.text.strip()
+                
+                todayTemp           = bsObj.find('div', {'class': 'main_info'}).find('span', {'class': 'todaytemp'}).text.strip()  # 온도
+                todayValue          = bsObj.find('div', {'class': 'main_info'}).find('ul', {'class': 'info_list'}).find('p', {'class': 'cast_txt'}).text.strip()
+                todayFeelingTemp    = bsObj.find('div', {'class': 'main_info'}).find('ul', {'class': 'info_list'}).find('span', {'class': 'sensible'}).text.strip()  
+                todayMiseaMongi     = bsObj.find('div', {'class': 'sub_info'}).find('div', {'class': 'detail_box'}).find('dd').text  
+                tomorrowTemp        = bsObj.find('div', {'class': 'table_info weekly _weeklyWeather'}).find('li', {'class': 'date_info'}).find('dl').find('dd').text.strip()
+
+                tomorrowMoring      = bsObj.find('div', {'class': 'tomorrow_area'}).find('div', {'class': 'main_info morning_box'}).find('span', {'class': 'todaytemp'}).text.strip()
+                tomorrowValue       = bsObj.find('div', {'class': 'tomorrow_area'}).find('div', {'class': 'main_info morning_box'}).find('div', {'class': 'info_data'}).text.strip()  
+                tomorrowAllFind     = bsObj.find('div', {'class': 'tomorrow_area'}).find_all('div', {'class': 'main_info morning_box'})
+                
+                tomorrowAfterTemp   = tomorrowAllFind[1].find('p', {'class': 'info_temperature'}).find('span', {'class': 'todaytemp'}).text.strip() 
+                tomorrowAfterValue1 = tomorrowAllFind[1].find('div', {'class': 'info_data'})
+                tomorrowAfterValue  = tomorrowAfterValue1.text.strip()
+                
                 embed = discord.Embed(
                     title=learn[1]+ ' 정보',
                     description=learn[1]+ ' 정보입니다.',
